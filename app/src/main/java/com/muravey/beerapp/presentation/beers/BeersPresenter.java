@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 public class BeersPresenter implements IBeersContract.Presenter {
     IBeersContract.View view;
+
     @Override
     public void onBeerClick(int position) {
 
@@ -14,7 +15,11 @@ public class BeersPresenter implements IBeersContract.Presenter {
     @Override
     public void getBeers() {
         ArrayList<BeerEntity> beers = new ArrayList<>();
-        beers.add(new BeerEntity());
+        beers.add(new BeerEntity("Ae", 0, null, null));
+        beers.add(new BeerEntity("Ae", 0, null, null));
+        beers.add(new BeerEntity("Ae", 0, null, null));
+        beers.add(new BeerEntity("Ae", 0, null, null));
+
 
         view.showBeers(beers);
     }

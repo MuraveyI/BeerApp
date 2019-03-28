@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 public interface IBeersContract {
     interface View extends CoreMvpContract.View<CoreMvpContract.Presenter>{
+
         void showBeers(ArrayList<BeerEntity> beers );
 
         void openBeerDetails(int id);

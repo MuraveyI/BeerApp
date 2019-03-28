@@ -5,6 +5,8 @@
 
     <TextView
         android:id="@+id/beer_name"
+        android:text="Beer"
+        android:textSize="25sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 </LinearLayout>
