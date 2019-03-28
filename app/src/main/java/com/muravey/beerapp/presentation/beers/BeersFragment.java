@@ -40,6 +40,7 @@ public class BeersFragment extends Fragment implements IBeersContract.View {
     @Override
     public void attachPresenter(CoreMvpContract.Presenter presenter) {
 
+
     }
 
     @Override
