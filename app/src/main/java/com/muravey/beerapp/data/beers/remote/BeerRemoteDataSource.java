@@ -27,6 +27,7 @@ public class BeerRemoteDataSource implements IBeerRemoteDataSource {
     @Override
     public void getBeers(final BeersCallBack callback) {
         Call<List<BeerEntity>> call=client.getBeers(50);
+        Log.d("qwe", "50");
 
         call.enqueue(new Callback<List<BeerEntity>>() {
             @Override
