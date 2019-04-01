@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.beerapp">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:name="com.muravey.beerapp.BeerApp"
         android:allowBackup="true"
@@ -12,21 +14,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name="com.muravey.beerapp.presentation.beers.BeerDetailsFragment">
+        <activity android:name="com.muravey.beerapp.presentation.beerdetails.BeerDetailsFragment">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.muravey.beerapp.presentation.beerdetails.BeerDetailActivity">
+        <activity android:name="com.muravey.beerapp.presentation.beerdetails.BeerDetailsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.muravey.beerapp.presentation.beers.BeersActivity" />
         <activity android:name="com.muravey.beerapp.presentation.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -5,14 +5,8 @@ import android.os.Bundle;
 
 import com.example.beerapp.R;
 
-public class BeerDetailActivity extends AppCompatActivity
+public class BeerDetailsActivity extends AppCompatActivity
     implements IBeerDetailsContract.View{
-
-    private String title;
-    private String desccription;
-    private String image;
-    private String price;
-
 
     private IBeerDetailsContract.Presenter mPrsenter; // та хрень которая сама решает что делать и мы вручную создаем
 

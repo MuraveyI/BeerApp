@@ -1,11 +1,14 @@
 package com.muravey.beerapp.presentation.beers;
 
+import com.muravey.beerapp.data.beers.IBeerDataSours;
 import com.muravey.beerapp.model.BeerEntity;
 
 import java.util.ArrayList;
 
 public class BeersPresenter implements IBeersContract.Presenter {
     IBeersContract.View view;
+
+
 
     @Override
     public void onBeerClick(int position) {
@@ -26,7 +29,8 @@ public class BeersPresenter implements IBeersContract.Presenter {
 
     @Override
     public void attachView(IBeersContract.View view) {
-
+        this.view = view; // saved the link на вьшку,just know it
+        view.attachPresenter(this);
     }
 
     @Override

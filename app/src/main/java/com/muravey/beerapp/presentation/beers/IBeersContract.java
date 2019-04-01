@@ -6,7 +6,7 @@ import com.muravey.core.CoreMvpContract;
 import java.util.ArrayList;
 
 public interface IBeersContract {
-    interface View extends CoreMvpContract.View<CoreMvpContract.Presenter>{
+    interface View extends CoreMvpContract.View<Presenter>{
 
         void showBeers(ArrayList<BeerEntity> beers );
 

@@ -2,11 +2,17 @@ package com.muravey.beerapp.presentation.main;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.example.beerapp.R;
+import com.muravey.beerapp.data.beers.remote.BeerRemoteDataSource;
+import com.muravey.beerapp.data.beers.remote.IBeerRemoteDataSource;
+import com.muravey.beerapp.model.BeerEntity;
 import com.muravey.beerapp.presentation.beers.BeersFragment;
 import com.muravey.beerapp.presentation.beers.BeersPresenter;
 import com.muravey.beerapp.presentation.beers.IBeersContract;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -15,15 +21,34 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
         BeersFragment fragment = new BeersFragment();
 
-        getSupportFragmentManager().beginTransaction().add(R.id.beer_frame,fragment).commit();
+        getSupportFragmentManager()
+                .beginTransaction()
+                .add(android.R.id.content,fragment)
+                .commit();
 
         mPresenter = new BeersPresenter();
         mPresenter.attachView(fragment);
+
+        new BeerRemoteDataSource().getBeers(new IBeerRemoteDataSource.BeersCallBack() {
+            @Override
+            public void onSuccess(List<BeerEntity> beers) {
+                Log.d("qwe", "Beers response"+beers.size());
+
+                for(BeerEntity beerEntity: beers){
+                    Log.d("qwe", beerEntity.toString());
+                }
+            }
+
+            @Override
+            public void onFailure(String message) {
+                Log.d("qwe", message);
+            }
+        });
     }
+
+
 }
 
 

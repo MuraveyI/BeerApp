@@ -12,39 +12,53 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.example.beerapp.R;
 import com.muravey.beerapp.model.BeerEntity;
+import com.muravey.beerapp.presentation.beers.recycler.BeersAdapter;
 import com.muravey.core.CoreMvpContract;
 import java.util.ArrayList;
 
 public class BeersFragment extends Fragment implements IBeersContract.View {
 
- private IBeersContract.Presenter mPresenter;
+   private IBeersContract.Presenter mPresenter;
 
-   RecyclerView recyclerView;
-   Adapter adapter ;
+   private   RecyclerView recyclerView;
+   private   BeersAdapter adapter ;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        adapter = new BeersAdapter();
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+
+
         View view = inflater.inflate(R.layout.fragment_beers, container, false);
-        recyclerView = view.findViewById(R.id.recycler_view);
+        recyclerView = view.findViewById(R.id.beers_recycler);
+
         recyclerView .setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setHasFixedSize(true);
-
-        mPresenter = new BeersPresenter();
-
-
-        mPresenter.attachView(this);
-
-        mPresenter.getBeers();
+        recyclerView.setAdapter(adapter);
 
        return view;
 
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        if(mPresenter !=null){
+            mPresenter.getBeers();
+        }
+    }
+
+    @Override
     public void showBeers(ArrayList<BeerEntity> beers) {
         Log.e("TAG", "showBeers: ========= " + beers);
-        adapter = new Adapter(beers);
-       recyclerView.setAdapter(adapter);
+
+        adapter.setBeers(beers);
     }
 
     @Override
@@ -53,9 +67,8 @@ public class BeersFragment extends Fragment implements IBeersContract.View {
     }
 
     @Override
-    public void attachPresenter(CoreMvpContract.Presenter presenter) {
-
-
+    public void attachPresenter(IBeersContract.Presenter presenter) {
+        mPresenter = presenter;
     }
 
     @Override

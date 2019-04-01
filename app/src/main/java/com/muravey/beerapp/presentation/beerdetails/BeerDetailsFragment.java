@@ -1,4 +1,4 @@
-package com.muravey.beerapp.presentation.beers;
+package com.muravey.beerapp.presentation.beerdetails;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

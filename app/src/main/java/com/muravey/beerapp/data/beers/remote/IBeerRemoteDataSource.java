@@ -5,5 +5,16 @@ import com.muravey.beerapp.model.BeerEntity;
 import java.util.List;
 
 public interface IBeerRemoteDataSource {
-    List<BeerEntity> loadBeers();
+
+    void getBeers(BeersCallBack callback);
+
+    interface BeersCallBack{
+
+        void onSuccess(List<BeerEntity> beers);
+        void onFailure(String message);
+
+
+
+    }
+
 }
